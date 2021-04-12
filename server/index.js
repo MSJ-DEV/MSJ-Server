@@ -11,13 +11,6 @@ app.get("/", (req, res)=>{
 })
 
 
-app.get('/users', function(req, res) {
-  // TODO - your code here!
-  db.getAll((err, result)=> {
-    if (err) {throw err}
-    return res.status(200).json(result)
-  })
 
-});
 
 module.exports = app
