@@ -9,14 +9,28 @@ const getAllUsers = (req, res) => {
   // working with promise ( no need for async fn)
 
   const sql = "SELECT * FROM USERS";
-  connection.query(sql, (err, result, fields) => {
-    if (err) {
-      res.send(err);
-    } else {
+  connection.query(sql, (err, result) => {
+    try {
       res.send(result);
+    } catch (err) {
+      res.send(err);
     }
   });
 };
+
+// // function get all users
+// const getAllUsers = (req, res) => {
+//   // working with promise ( no need for async fn)
+
+//   const sql = "SELECT * FROM USERS";
+//   connection.query(sql, (err, result, fields) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(result);
+//     }
+//   });
+// };
 
 // function to create one user
 const createOneUser = (user) => {

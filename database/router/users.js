@@ -3,7 +3,7 @@ const router = express.Router();
 // getting the logic from controller
 const userController = require("../controllers/signup");
 
-// register
+// create one user
 router.post("/create", (req, res) => {
   userController
     .createOneUser(req.body)
@@ -19,7 +19,7 @@ router.post("/auth", function (req, res) {
 });
 
 // getting all users for testing purpose
-router.get("/profile", userController.getAllUsers);
+router.get("/fetch", userController.getAllUsers);
 
 // profile
 router.get("/profile", userController.getAllUsers);
