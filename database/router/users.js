@@ -4,8 +4,13 @@ const router = express.Router();
 const userController = require("../controllers/signup");
 
 // register
-router.post("/create", function (req, res) {
-  res.send("Creating new user");
+router.post("/create", (req, res) => {
+  userController
+    .createOneUser(req.body)
+    .then(() => {
+      res.send({ msg: "created" });
+    })
+    .catch((err) => res.send({ msg: "not created" }));
 });
 
 // authentificate

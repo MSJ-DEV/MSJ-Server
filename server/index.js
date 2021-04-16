@@ -8,6 +8,8 @@ const path = require("path");
 // for 3rd party identification
 const passport = require("passport");
 
+app.use(express.json());
+
 // calling and using  routers here
 const { router } = require("../database/router/products.js");
 app.use("/api/poducts", router);
@@ -18,7 +20,6 @@ app.use("/api/users", userRouter);
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.use(express.json());
 
 // port
 app.set("port", 3333);
