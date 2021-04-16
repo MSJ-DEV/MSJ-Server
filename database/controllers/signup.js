@@ -1,6 +1,8 @@
 // here where you can find the process of creation for one user
+
 // to hash the passsword
 const bcrypt = require("bcryptjs");
+
 // to create the connection for the query
 const { connection } = require("../index");
 
@@ -33,11 +35,12 @@ const getAllUsers = (req, res) => {
 // };
 
 // function to create one user
+var newPassword = "";
 const createOneUser = (user) => {
   // sending the flat password and getting hashed one to store it in db
-  user.password = hash(user.password);
+  user.password = hashPassword(user.password);
   return new Promise((resolve, reject) => {
-    const sql = `INSERT INTO users (firstName, lastName, email, password, numberPhone) VALUES ("${user.firstName}", "${user.lastName}", "${user.email}", "${user.password}", ${user.numberPhone})`;
+    const sql = `INSERT INTO users (firstName, lastName, email, password, numberPhone) VALUES ("${user.firstName}", "${user.lastName}", "${user.email}", "${newPassword}", ${user.numberPhone})`;
     connection.query(sql, (err, result) => {
       if (err) {
         return reject(err);
@@ -47,5 +50,19 @@ const createOneUser = (user) => {
     });
   });
 };
+
+// password hashing function
+const hashPassword = function (password) {
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(password, salt, (err, hash) => {
+      if (err) {
+        throw err;
+      } else {
+        newPassword = hash;
+      }
+    });
+  });
+};
+// password comparing function
 
 module.exports = { getAllUsers, createOneUser };

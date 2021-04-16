@@ -1,3 +1,5 @@
+//  user router
+
 const express = require("express");
 const router = express.Router();
 // getting the logic from controller
@@ -13,13 +15,13 @@ router.post("/create", (req, res) => {
     .catch((err) => res.send({ msg: "not created" }));
 });
 
+// getting all users for testing purpose
+router.get("/fetch", userController.getAllUsers);
+
 // authentificate
 router.post("/auth", function (req, res) {
   res.send("auth");
 });
-
-// getting all users for testing purpose
-router.get("/fetch", userController.getAllUsers);
 
 // profile
 router.get("/profile", userController.getAllUsers);
