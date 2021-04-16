@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users(
     lastName VARCHAR(200),
     email VARCHAR(200),
     password VARCHAR(200),
-    numberphone INT (20),
+    numberPhone INT (20),
     PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS products(

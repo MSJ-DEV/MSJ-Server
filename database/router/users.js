@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
+// getting the logic from controller
+const userController = require("../controllers/signup");
 
-console.log("test");
 // register
 router.post("/create", function (req, res) {
   res.send("Creating new user");
@@ -12,9 +13,10 @@ router.post("/auth", function (req, res) {
   res.send("auth");
 });
 
+// getting all users for testing purpose
+router.get("/profile", userController.getAllUsers);
+
 // profile
-router.get("/profile", function (req, res) {
-  res.send("profile");
-});
+router.get("/profile", userController.getAllUsers);
 
 module.exports = router;
