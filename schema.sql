@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS products(
     name VARCHAR(200),
     information VARCHAR(200),
     category VARCHAR(200),
-    oldprice number,
+    oldprice INT,
     newprice INT,
     type VARCHAR (200),
     quantity VARCHAR(200),
