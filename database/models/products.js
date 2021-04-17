@@ -13,7 +13,19 @@ module.exports={
             err ? res.status(500).send(err):res.status(200).send(results)
         })
     },
-    updateproducts:(req,res)=>{
-
-    }
+    updateproducts:(product,id)=>{
+         return new Promise((resolve,reject)=>{
+             connection.query(`UPDATE products SET newprice=? ,quantity=? ,status=? ,promotion=? WHERE id=?`,
+             
+             [product.newprice,product.quantity,product.status,product.promotion,id],(err,results)=>{
+                err?reject(err):resolve(results)
+             })
+         })    
+    },
+    deleteproduct:((req,res)=>{
+        const query =`DELETE FROM products WHERE id=${req.params.id}`
+        connection.query(query,(err,results)=>{
+            err ? res.status(500).send(err):res.status(200).send('deleted')
+        })
+    })
 }   
