@@ -3,12 +3,12 @@ CREATE DATABASE IF NOT EXISTS carrefour;
 USE carrefour;
 
 CREATE TABLE IF NOT EXISTS users(
-    id INT NOT NULL AUTO_INCREMENT, 
+    id int AUTO_INCREMENT, 
     firstName VARCHAR(200),
     lastName VARCHAR(200),
     email VARCHAR(200),
     password VARCHAR(200),
-    numberphone INT (20),
+    numberPhone INT,
     PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS products(
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS products(
     name VARCHAR(200),
     information VARCHAR(200),
     category VARCHAR(200),
-    oldprice number,
+    oldprice INT,
     newprice INT,
     type VARCHAR (200),
     quantity VARCHAR(200),
