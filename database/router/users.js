@@ -1,29 +1,42 @@
 //  user router
 
 const express = require("express");
+const { user } = require("../../configSQL");
 const router = express.Router();
 // getting the logic from controller
 const userController = require("../controllers/signup");
 
-// create one user
+// ************************************** get all users ************************************** \\
+router.get("/fetch", userController.getAllUsers);
+
+// ************************************** create one user ************************************** \\
 router.post("/create", (req, res) => {
   userController
     .createOneUser(req.body)
     .then(() => {
-      res.send({ msg: "created" });
+      res.send({ message: "created" });
     })
-    .catch((err) => res.send({ msg: "not created" }));
+    .catch((err) => res.send({ message: "not created" }));
 });
 
-// getting all users for testing purpose
-router.get("/fetch", userController.getAllUsers);
+// ************************************** get one user by id ************************************** \\
+router.put("/update", (req, res) => {
+  console.log("test");
+  userController
+    .getOneUser(req.body.id)
+    .then((data) => {
+      res.send({ message: "done" });
+    })
+    .catch((err) => res.send({ message: "error occured" }));
+});
 
-// authentificate
+// ************************************** to do later ************************************** \\
 router.post("/auth", function (req, res) {
   res.send("auth");
 });
 
-// profile
+// ************************************** to do later  ************************************** \\
+
 router.get("/profile", userController.getAllUsers);
 
 module.exports = router;
