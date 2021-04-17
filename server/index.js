@@ -8,4 +8,5 @@ app.set('port',3333)
 app.use(express.json());
 
 app.use('/api/poducts',router)
+
 module.exports = app
