@@ -20,14 +20,18 @@ router.post("/create", (req, res) => {
 });
 
 // ************************************** get one user by id ************************************** \\
-router.put("/update", (req, res) => {
-  console.log("test");
+router.put("/oneUser", (req, res) => {
   userController
     .getOneUser(req.body.id)
     .then((data) => {
       res.send({ message: "done" });
     })
     .catch((err) => res.send({ message: "error occured" }));
+});
+
+// ************************************** update one by id ************************************** \\
+router.put("/update/:id", (req, res) => {
+  userController.updateUser(req.params.id, req.body);
 });
 
 // ************************************** to do later ************************************** \\
