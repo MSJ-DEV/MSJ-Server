@@ -16,27 +16,28 @@ const createOneUser = async function (user) {
   if (check[0]) {
     return " this email is already in use";
   } else {
-    console.log("in");
     // sending the flat password and getting hashed one to store it in db
-    user.password = hashPassword(user.password);
-    return new Promise((resolve, reject) => {
-      const sql = `INSERT INTO users (firstName, lastName, email, password, numberPhone) VALUES ("${user.firstName}", "${user.lastName}", "${user.email}", "${newPassword}", ${user.numberPhone})`;
-      connection.query(sql, (err, result) => {
-        if (err) {
-          return reject(err);
-        } else {
-          return resolve("created");
-        }
+    user.password = await hashPassword(user.password);
+    setTimeout(() => {
+      return new Promise((resolve, reject) => {
+        console.log(newPassword);
+        const sql = `INSERT INTO users (firstName, lastName, email, password, numberPhone) VALUES ("${user.firstName}", "${user.lastName}", "${user.email}", "${newPassword}", ${user.numberPhone})`;
+        connection.query(sql, (err, result) => {
+          if (err) {
+            return reject(err);
+          } else {
+            return resolve("created");
+          }
+        });
       });
-    });
+    }, 1000);
   }
 };
 
 // ************************************** function to hash password ************************************** \\
 
 const hashPassword = async function (password) {
-  bcrypt.genSalt(10, (err, salt) => {
-    console.log(salt);
+  await bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(password, salt, (err, hash) => {
       if (err) {
         console.log(err);

@@ -58,14 +58,14 @@ router.put("/update/:id", (req, res) => {
 router.post("/auth", function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
-  signUpController
-    .getOneUserByEmail(email)
+  signInController
+    .comparePassword(email, password)
     .then((data) => {
-      if (!data[0]) {
-        res.send({ message: "user not found" });
-      }
+      res.send({ message: "succes or fail" });
     })
-    .catch((err) => res.send({ message: "error occured while logging in" }));
+    .catch((err) => {
+      res.send({ messahe: "error while logging in" });
+    });
 });
 
 // ************************************** to do later  ************************************** \\
