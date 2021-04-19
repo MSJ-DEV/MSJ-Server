@@ -13,16 +13,26 @@ router.get("/fetch", userController.getAllUsers);
 router.post("/create", (req, res) => {
   userController
     .createOneUser(req.body)
-    .then(() => {
-      res.send({ message: "created" });
+    .then((data) => {
+      res.send(data);
     })
     .catch((err) => res.send({ message: "not created" }));
 });
 
 // ************************************** get one user by id ************************************** \\
-router.put("/oneUser", (req, res) => {
+router.get("/oneUserId/:id", (req, res) => {
   userController
-    .getOneUser(req.body.id)
+    .getOneUser(req.params.id)
+    .then((data) => {
+      res.send({ message: "done" });
+    })
+    .catch((err) => res.send({ message: "error occured" }));
+});
+
+// ************************************** get one user by email ************************************** \\
+router.get("/oneUserEmail", (req, res) => {
+  userController
+    .getOneUserByEmail(req.body.email)
     .then((data) => {
       res.send({ message: "done" });
     })
@@ -31,7 +41,14 @@ router.put("/oneUser", (req, res) => {
 
 // ************************************** update one by id ************************************** \\
 router.put("/update/:id", (req, res) => {
-  userController.updateUser(req.params.id, req.body);
+  userController
+    .updateUser(req.params.id, req.body)
+    .then((data) => {
+      res.send({ message: "your profile has been updated" });
+    })
+    .catch((err) => {
+      res.send({ message: "error occured while updating your profile" });
+    });
 });
 
 // ************************************** to do later ************************************** \\
