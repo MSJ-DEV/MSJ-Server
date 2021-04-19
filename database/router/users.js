@@ -13,16 +13,26 @@ router.get("/fetch", userController.getAllUsers);
 router.post("/create", (req, res) => {
   userController
     .createOneUser(req.body)
-    .then(() => {
-      res.send({ message: "created" });
+    .then((data) => {
+      res.send(data);
     })
     .catch((err) => res.send({ message: "not created" }));
 });
 
 // ************************************** get one user by id ************************************** \\
-router.get("/oneUser/:id", (req, res) => {
+router.get("/oneUserId/:id", (req, res) => {
   userController
     .getOneUser(req.params.id)
+    .then((data) => {
+      res.send({ message: "done" });
+    })
+    .catch((err) => res.send({ message: "error occured" }));
+});
+
+// ************************************** get one user by email ************************************** \\
+router.get("/oneUserEmail", (req, res) => {
+  userController
+    .getOneUserByEmail(req.body.email)
     .then((data) => {
       res.send({ message: "done" });
     })

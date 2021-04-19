@@ -19,14 +19,11 @@ const getAllUsers = (req, res) => {
   });
 };
 
-// ************************************** create one user ************************************** \\
+// ************************************** fetch one user by email ************************************** \\
 
-var newPassword = "";
-const createOneUser = (user) => {
-  // sending the flat password and getting hashed one to store it in db
-  user.password = hashPassword(user.password);
+const getOneUserByEmail = (email) => {
   return new Promise((resolve, reject) => {
-    const sql = `INSERT INTO users (firstName, lastName, email, password, numberPhone) VALUES ("${user.firstName}", "${user.lastName}", "${user.email}", "${newPassword}", ${user.numberPhone})`;
+    const sql = `SELECT * FROM users WHERE email = "${email}"`;
     connection.query(sql, (err, result) => {
       if (err) {
         return reject(err);
@@ -36,10 +33,34 @@ const createOneUser = (user) => {
     });
   });
 };
+// ************************************** create one user ************************************** \\
+
+var newPassword = "";
+const createOneUser = async function (user) {
+  var check = await getOneUserByEmail(user.email);
+
+  if (check[0]) {
+    return " this email is already in use";
+  } else {
+    console.log("in");
+    // sending the flat password and getting hashed one to store it in db
+    user.password = hashPassword(user.password);
+    return new Promise((resolve, reject) => {
+      const sql = `INSERT INTO users (firstName, lastName, email, password, numberPhone) VALUES ("${user.firstName}", "${user.lastName}", "${user.email}", "${newPassword}", ${user.numberPhone})`;
+      connection.query(sql, (err, result) => {
+        if (err) {
+          return reject(err);
+        } else {
+          return resolve("created");
+        }
+      });
+    });
+  }
+};
 
 // // ************************************** fetch one user by id ************************************** \\
 
-const getOneUser = (id) => {
+const getOneUserById = (id) => {
   return new Promise((resolve, reject) => {
     const sql = `SELECT * FROM users WHERE id = ${id}`;
     connection.query(sql, (err, result) => {
@@ -142,4 +163,10 @@ const hashPassword = async function (password) {
 // ************************************** function to compare password ************************************** \\
 
 // ************************************** export methods ************************************** \\
-module.exports = { getAllUsers, createOneUser, getOneUser, updateUser };
+module.exports = {
+  getAllUsers,
+  createOneUser,
+  getOneUserById,
+  updateUser,
+  getOneUserByEmail,
+};
