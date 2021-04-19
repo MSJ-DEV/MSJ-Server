@@ -61,10 +61,11 @@ router.post("/auth", function (req, res) {
   signInController
     .comparePassword(email, password)
     .then((data) => {
-      res.send({ message: "succes or fail" });
+      console.log(data);
+      res.send({ message: data });
     })
     .catch((err) => {
-      res.send({ messahe: "error while logging in" });
+      res.send({ messahe: "error while logging in", err: err });
     });
 });
 
