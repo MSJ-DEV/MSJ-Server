@@ -4,14 +4,16 @@ const express = require("express");
 const { user } = require("../../configSQL");
 const router = express.Router();
 // getting the logic from controller
-const userController = require("../controllers/signup");
+const signUpController = require("../controllers/signup");
+const signInController = require("../controllers/signin");
+const userController = require("../controllers/user");
 
 // ************************************** get all users ************************************** \\
 router.get("/fetch", userController.getAllUsers);
 
 // ************************************** create one user ************************************** \\
 router.post("/create", (req, res) => {
-  userController
+  signUpController
     .createOneUser(req.body)
     .then((data) => {
       res.send(data);
@@ -22,7 +24,7 @@ router.post("/create", (req, res) => {
 // ************************************** get one user by id ************************************** \\
 router.get("/oneUserId/:id", (req, res) => {
   userController
-    .getOneUser(req.params.id)
+    .getOneUserById(req.params.id)
     .then((data) => {
       res.send({ message: "done" });
     })
@@ -43,6 +45,7 @@ router.get("/oneUserEmail", (req, res) => {
 router.put("/update/:id", (req, res) => {
   userController
     .updateUser(req.params.id, req.body)
+
     .then((data) => {
       res.send({ message: "your profile has been updated" });
     })
@@ -51,9 +54,19 @@ router.put("/update/:id", (req, res) => {
     });
 });
 
-// ************************************** to do later ************************************** \\
+// ************************************** authenticate ************************************** \\
 router.post("/auth", function (req, res) {
-  res.send("auth");
+  const email = req.body.email;
+  const password = req.body.password;
+  signInController
+    .comparePassword(email, password)
+    .then((data) => {
+      console.log(data);
+      res.send({ message: data });
+    })
+    .catch((err) => {
+      res.send({ messahe: "error while logging in", err: err });
+    });
 });
 
 // ************************************** to do later  ************************************** \\
