@@ -9,7 +9,6 @@ const path = require("path");
 const passport = require("passport");
 app.use(passport.initialize());
 app.use(passport.session());
-require("./passport")(passport);
 
 app.use(express.json());
 
@@ -19,6 +18,9 @@ app.use("/api/poducts", router);
 
 const userRouter = require("../database/router/users");
 app.use("/api/users", userRouter);
+
+const userAuthRouter = require("../database/router/user-auth");
+app.use("/api/auth", userAuthRouter);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

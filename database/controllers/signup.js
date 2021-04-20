@@ -3,7 +3,8 @@
 const userController = require("./user");
 // to hash the passsword
 const bcrypt = require("bcryptjs");
-
+var salt = bcrypt.genSaltSync(10);
+var hash = bcrypt.hashSync("B4c0//", salt);
 // to create the connection for the query
 const { connection } = require("../index");
 
@@ -24,9 +25,10 @@ const createOneUser = async function (user) {
         const sql = `INSERT INTO users (firstName, lastName, email, password, numberPhone) VALUES ("${user.firstName}", "${user.lastName}", "${user.email}", "${newPassword}", ${user.numberPhone})`;
         connection.query(sql, (err, result) => {
           if (err) {
+            console.log(err);
             return reject(err);
           } else {
-            return resolve("created");
+            return resolve({ message: "new user has been created" });
           }
         });
       });
