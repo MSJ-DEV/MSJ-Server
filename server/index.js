@@ -5,8 +5,11 @@ var cors = require("cors");
 const db = require("../database/index.js");
 // for paths
 const path = require("path");
-// for 3rd party identification
+// passport middelware
 const passport = require("passport");
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passport")(passport);
 
 app.use(express.json());
 
