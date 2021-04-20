@@ -2,11 +2,14 @@ const express = require("express");
 const app = express();
 var bodyParser = require("body-parser");
 var cors = require("cors");
+app.use(cors());
+
 const db = require("../database/index.js");
 // for paths
 const path = require("path");
 // for 3rd party identification
 const passport = require("passport");
+
 
 app.use(express.json());
 
@@ -19,7 +22,6 @@ app.use("/api/users", userRouter);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
 
 // port
 app.set("port", 3333);
