@@ -1,11 +1,8 @@
 //  user router
-
 const express = require("express");
-const { user } = require("../../configSQL");
 const router = express.Router();
 // getting the logic from controller
 const signUpController = require("../controllers/signup");
-const signInController = require("../controllers/signin");
 const userController = require("../controllers/user");
 
 // ************************************** get all users ************************************** \\
@@ -16,7 +13,8 @@ router.post("/create", (req, res) => {
   signUpController
     .createOneUser(req.body)
     .then((data) => {
-      res.send(data);
+      console.log(data);
+      res.send({ message: "new user has been created" });
     })
     .catch((err) => res.send({ message: "not created" }));
 });
@@ -54,23 +52,20 @@ router.put("/update/:id", (req, res) => {
     });
 });
 
-// ************************************** authenticate ************************************** \\
-router.post("/auth", function (req, res) {
-  const email = req.body.email;
-  const password = req.body.password;
-  signInController
-    .comparePassword(email, password)
-    .then((data) => {
-      console.log(data);
-      res.send({ message: data });
-    })
-    .catch((err) => {
-      res.send({ messahe: "error while logging in", err: err });
-    });
-});
-
-// ************************************** to do later  ************************************** \\
-
-router.get("/profile", userController.getAllUsers);
-
 module.exports = router;
+
+// ************************************** authenticate with facebook ************************************** \\
+// router.post("/facebook", function (req, res) {
+//   const email = req.body.email;
+//   const password = req.body.password;
+//   signInController
+//     .comparePassword(email, password)
+//     .then((data) => {
+//       authChecker(passport);
+
+//       res.send({ message: data });
+//     })
+//     .catch((err) => {
+//       res.send({ messahe: "error while logging in", err: err });
+//     });
+// });

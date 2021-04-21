@@ -3,8 +3,6 @@
 var bcrypt = require("bcryptjs");
 var salt = bcrypt.genSaltSync(10);
 var hash = bcrypt.hashSync("B4c0//", salt);
-const config = require("../config");
-const { connection } = require("../index");
 const userController = require("./user");
 const signUpController = require("./signup");
 const passport = require("passport");
@@ -24,8 +22,18 @@ const comparePassword = async function (email, oldPassword) {
           if (err) {
             reject("error occured while checking your password");
           }
+          // if match create the token and the session + message
           if (match) {
-            resolve("password matched");
+            resolve({
+              message: "password matched",
+              user: {
+                id: checkEmail[0].id,
+                firstName: checkEmail[0].firstName,
+                lastName: checkEmail[0].lastName,
+                email: checkEmail[0].email,
+                numberPhone: checkEmail[0].numberPhone,
+              },
+            });
           } else {
             resolve("wrong password");
           }
