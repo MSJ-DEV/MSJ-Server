@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS products(
     type VARCHAR (200),
     quantity VARCHAR(200),
     image VARCHAR(200),
+    quantityinstock VARCHAR(200),
     status VARCHAR(200),
     promotion VARCHAR(20),
     PRIMARY KEY (id)
@@ -31,8 +32,15 @@ CREATE TABLE IF NOT EXISTS list(
     name VARCHAR(200),
     quantity VARCHAR(200),
     description VARCHAR(200),
-    price INT,
+    price VARCHAR(200),
     image VARCHAR(200),
     information VARCHAR(200),
     PRIMARY KEY (id)
 );
+CREATE TABLE IF NOT EXISTS admin(
+    id INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(255),
+    password VARCHAR(255),
+    PRIMARY KEY (id)
+);
+INSERT INTO admin(email,password)VALUES("admin@msj.com","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
