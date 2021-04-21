@@ -24,13 +24,8 @@ const comparePassword = async function (email, oldPassword) {
           }
           // if match create the token and the session + message
           if (match) {
-            // const secret;
-            // const token = jwt.sign(checkEmail[0], secret, {
-            //   expiresIn: 604800, //
-            // });
             resolve({
               message: "password matched",
-              //   token: "jwt " + token,
               user: {
                 id: checkEmail[0].id,
                 firstName: checkEmail[0].firstName,
