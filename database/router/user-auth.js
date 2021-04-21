@@ -6,27 +6,26 @@ const passport = require("passport");
 const { authChecker } = require("../../server/passport");
 
 // ************************************** authenticate with facebook ************************************** \\
-router.post("/facebook", function (req, res) {
-  const email = req.body.email;
-  const password = req.body.password;
-  signInController
-    .comparePassword(email, password)
-    .then((data) => {
-      authChecker(passport);
-
-      res.send({ message: data });
-    })
-    .catch((err) => {
-      res.send({ messahe: "error while logging in", err: err });
-    });
+router.get("/facebook", function (req, res) {
+  // handle with passport
+  res.send("logging in with facebook");
 });
 
 // ************************************** authenticate with google ************************************** \\
-router.post("/google", function (req, res) {});
+router.get("/google", function (req, res) {
+  // handle with passport
+  res.send("logging in with google");
+});
 
 // ************************************** authenticate with email ************************************** \\
-router.post("/login", function (req, res) {
+router.get("/login", function (req, res) {
   res.render("login");
+});
+
+// ************************************** authenticate logout ************************************** \\
+router.get("/logout", function (req, res) {
+  // handle with passport
+  res.render("logging out");
 });
 
 module.exports = router;
