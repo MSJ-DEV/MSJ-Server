@@ -36,7 +36,7 @@ router.get("/oneUserEmail", (req, res) => {
     .then((data) => {
       res.send({ message: "done" });
     })
-    .catch((err) => res.send({ message: "error occured" }));
+    .catch((err) => res.send(err));
 });
 
 // ************************************** update one by id ************************************** \\

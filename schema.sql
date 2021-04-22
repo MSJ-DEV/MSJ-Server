@@ -37,6 +37,8 @@ CREATE TABLE IF NOT EXISTS list(
     information VARCHAR(200),
     PRIMARY KEY (id)
 );
+insert into products (name, information, category, oldprice, newprice, type, quantity, image, status, promotion ) value ("spagetti", "pate courte", "pate", 420, 420, "Epi d'or", "200", "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1", "availeble", "true");
+insert into products (name, information, category, oldprice, newprice, type, quantity, image, status, promotion ) value ("spagetti", "pate longue", "pate", 430, 410, "Epi d'or", "200", "https://i1.wp.com/lepidor.com.tn/wp-content/uploads/nouilles-1.png?fit=431%2C431&ssl=1", "availeble", "true")
 CREATE TABLE IF NOT EXISTS admin(
     id INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(255),

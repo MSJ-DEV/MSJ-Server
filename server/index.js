@@ -14,7 +14,11 @@ app.use('/api/poducts',router)
 
 var bodyParser = require("body-parser");
 var cors = require("cors");
-// const db = require("../database/index.js");
+
+app.use(cors());
+
+
+
 // for paths
 const path = require("path");
 // passport middelware
@@ -22,11 +26,12 @@ const passport = require("passport");
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use(express.json());
 
 // calling and using  routers here
-const { router } = require("../database/router/products.js");
-app.use("/api/poducts", router);
+// const { router } = require("../database/router/products.js");
+// app.use("/api/poducts", router);
 
 const userRouter = require("../database/router/users");
 app.use("/api/users", userRouter);
@@ -36,7 +41,6 @@ app.use("/api/auth", userAuthRouter);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
 
 // port
 app.set("port", 3333);
