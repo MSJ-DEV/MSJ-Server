@@ -1,7 +1,7 @@
 const { connection } = require('../index.js');
 module.exports = {
     createProduct: (req, res) => {
-        const query = `INSERT INTO products(name,information,category,oldprice,newprice,type,quantity,image,quantityinstock,status,promotion) VALUES('${req.body.name}','${req.body.information}','${req.body.category}','${req.body.oldprice}','${req.body.newprice}','${req.body.type}','${req.body.quantity}','${req.body.image}','${req.body.quantityinstock}','${req.body.status}','${req.body.promotion}')`
+        const query = `INSERT INTO products(name,date,category,oldprice,newprice,type,quantity,image,quantityinstock,status,promotion) VALUES('${req.body.name}','${req.body.information}','${req.body.category}','${req.body.oldprice}','${req.body.newprice}','${req.body.type}','${req.body.quantity}','${req.body.image}','${req.body.quantityinstock}','${req.body.status}','${req.body.promotion}')`
         connection.query(query, (err, results) => {
 
             err ? res.status(500).send(err) : res.status(201).send(results)
@@ -17,9 +17,9 @@ module.exports = {
     },
     updateproducts: (product, id) => {
         return new Promise((resolve, reject) => {
-            connection.query(`UPDATE products SET newprice=? ,quantityinstock=? ,status=? ,promotion=? WHERE id=?`,
+            connection.query(`UPDATE products SET date=? ,newprice=? ,quantityinstock=?,promotion=? WHERE id=?`,
 
-                [product.newprice, product.quantityinstock, product.status, product.promotion, id], (err, results) => {
+                [ product.date,product.newprice, product.quantityinstock, product.promotion, id], (err, results) => {
                     err ? reject(err) : resolve(results)
                 })
         })

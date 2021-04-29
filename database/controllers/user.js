@@ -8,7 +8,7 @@ const { connection } = require("../index");
 // ************************************** fetch all users ************************************** \\
 
 const getAllUsers = (req, res) => {
-  const sql = "SELECT * FROM USERS";
+  const sql = "SELECT * FROM users";
   connection.query(sql, (err, result) => {
     try {
       res.send(result);
