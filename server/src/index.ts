@@ -1,17 +1,21 @@
-
 import express, { Request, Response, NextFunction } from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import { Stripe } from 'stripe'
 import {v4 as uuidv4} from 'uuid'
  
-const stripe = new Stripe('pk_test_51IlZycKBsFdldFb4Ezu6WRvjY8AYddYOCnAzrXXavtzHcUN1VR7lsdGkHkIVOFI0dN23D7T6Q9ELo7WwaHCEAOHU003j3J7er6',  {
+const stripe = new Stripe('sk_test_51IlZycKBsFdldFb4DFJHVTKxKo0ZmaXBM1IvIGFgUBaYnsIx3MS5l9B8Z34a8qohlzMhUtXBfqyHKZsYSPf43bg000GpJbMLJj',  {
     apiVersion: '2020-08-27',
   })
  
  const app = express()
  app.use(cors())
  app.use(bodyParser.json())
+ app.use('/', (req, res, next) => {
+    
+    res.json('Thank you...')
+})
+
   
 interface Product {
     description: string,
@@ -24,7 +28,7 @@ app.post('/payment', async (req: Request, res: Response, next: NextFunction) => 
     const { token } = authToken;
     const { card } = token;
 
-    console.log(card);
+    console.log('111111111',card);
 
 
   
@@ -54,7 +58,7 @@ app.post('/payment', async (req: Request, res: Response, next: NextFunction) => 
              shipping: {
                  name: card.name,
                  address: {
-                     line1: "Mumbai",
+                     line1: "MAHDIA",
                      country: card.address_country,
                   }
              }
@@ -76,14 +80,9 @@ app.post('/payment', async (req: Request, res: Response, next: NextFunction) => 
   
 })
 
-app.use('/', (req, res, next) => {
-    
-    res.json('Thank you...')
-})
 
 
 app.listen(8000, () => {
     
     console.log('Listening to port 8000')
 })
-
