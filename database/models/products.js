@@ -29,5 +29,27 @@ module.exports = {
         connection.query(query, (err, results) => {
             err ? res.status(500).send(err) : res.status(200).send('deleted')
         })
-    })
+    }),
+    createImage: (req, res) => {
+        console.log(req.body)
+        const query = `INSERT INTO images(image) VALUES('${req.body.image}')`
+        connection.query(query, (err, results) => {
+
+            err ? res.status(500).send(err) : res.status(201).send(results)
+
+        })
+
+    },
+    getImages: (req, res) => {
+        const query = "SELECT * FROM images"
+        connection.query(query, (err, results) => {
+            err ? res.status(500).send(err) : res.status(200).send(results)
+        })
+    },
+    deleteImages: (req, res) => {
+        const query = "DELETE FROM images;"
+        connection.query(query, (err, results) => {
+            err ? res.status(500).send(err) : res.status(200).send(results)
+        })
+    },
 }

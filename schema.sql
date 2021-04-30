@@ -9,6 +9,12 @@ CREATE TABLE IF NOT EXISTS users(
     email VARCHAR(200),
     password VARCHAR(200),
     numberPhone INT,
+     Address VARCHAR(255),
+    image VARCHAR(200),
+     country VARCHAR(20),
+    State VARCHAR(250),
+    Zip VARCHAR(250),
+    gender VARCHAR(250),
     PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS products(
@@ -41,12 +47,23 @@ CREATE TABLE IF NOT EXISTS list(
 
 CREATE TABLE IF NOT EXISTS admin(
     id INT NOT NULL AUTO_INCREMENT,
+    Firstname VARCHAR(250),
+    Lastname VARCHAR(250),
     username VARCHAR(255),
     email VARCHAR(255),
+    Address VARCHAR(255),
+    numberPhone  VARCHAR(250),
     password VARCHAR(255),
     repeatepassword VARCHAR(255),
     image VARCHAR(255),
     country VARCHAR(20),
+    State VARCHAR(250),
+    Zip INT,
+    PRIMARY KEY (id)
+);
+CREATE TABLE IF NOT EXISTS images(
+    id int AUTO_INCREMENT, 
+    image text,
     PRIMARY KEY (id)
 );
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Penne", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1",100, "availeble", "false");
@@ -58,7 +75,7 @@ insert into products (name, date, category, oldprice, newprice, type, quantity, 
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Spagitti", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://i2.wp.com/lepidor.com.tn/wp-content/uploads/nouilles-2.png?fit=431%2C431&ssl=1",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Fell 2", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://static.openfoodfacts.org/images/products/619/400/331/0052/front_fr.7.full.jpg",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Touna", "Dex 24/04/2021", "Keep box", '1.500', '1.500', "El Manar", 1, "https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/64/0903/1.jpg?8805",1000, "availeble", "false");
-INSERT INTO admin(username,email,password,repeatepassword,image,country)VALUES("Abidijhed","abidi55@gmail.com ","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","https://static.toiimg.com/photo/msid-67625046/67625046.jpg?57466",'cif-Tn');
+INSERT INTO admin(Firstname,Lastname,username,email,Address,password,repeatepassword,numberPhone,image,country,State,Zip)VALUES("","","Abidijhed","abidi55@gmail.com ","","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","2586","https://static.toiimg.com/photo/msid-67625046/67625046.jpg?57466","cif-Tn","Male",5);
 
 
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("spagetti", "pate courte", "Food", "0.420", "0.420", "Epi d'or", 1, "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1", 1500,  "availeble", "true");
@@ -70,3 +87,19 @@ insert into products (name, date, category, oldprice, newprice, type, quantity, 
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("Thon", "", "SeaFood", "17.890", "17.890", "IL Manar",1, "https://clickandcollect.monoprix.tn/44952-large_default/thon-entier.jpg",635, "availeble", "true");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("Thon", "SeaFood", "Thon", "5.190", "5.190", "Sidi Jabeur", 1, "https://clickandcollect.monoprix.tn/42508-large_default/thon-entier.jpg",658,  "availeble", "true");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("Harissa", "Harissa", "Harissa", "1.300"," 1.300", "Harissa du tunis", 1, "https://clickandcollect.monoprix.tn/42226-large_default/harissa.jpg",855,  "availeble", "true");
+-- {
+--                   "Firstname":"",
+--                   "Lastname":"",
+--                   "username":"AbidiJihed",
+--                   "email":"abidij55@gmail.com",
+--                   "Address":"",
+--                   "numberPhone":"",
+--                   "password":"Ji31826832",
+--                   "repeatepassword":"Ji31826832",
+--                 "image": "https://static.toiimg.com/photo/msid-67625046/67625046.jpg?57466",
+--                 "country":"",
+--                 "State":"",
+--                 "Zip":""
+              
+               
+-- }

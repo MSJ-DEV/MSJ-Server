@@ -9,9 +9,13 @@ const path = require("path");
 app.use(cors())
 app.set('port',3333)
 app.use(express.json());
-app.use('/',routerAdmin)
-app.use('/api/admin',routerAdmin)
-app.use('/api/poducts',router)
+
+
+app.use('/api/getall/',routerAdmin)//aminside
+app.use('/',routerAdmin)//aminside
+app.use('/',router)//extra work if i need it later 
+app.use('/api/poducts',router)//croud for the products 
+
 
 // passport middelware
 const passport = require("passport");
