@@ -11,10 +11,7 @@ const stripe = new Stripe('sk_test_51IlZycKBsFdldFb4DFJHVTKxKo0ZmaXBM1IvIGFgUBaY
  const app = express()
  app.use(cors())
  app.use(bodyParser.json())
- app.use('/', (req, res, next) => {
-    
-    res.json('Thank you...')
-})
+
 
   
 interface Product {
