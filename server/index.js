@@ -3,33 +3,25 @@ const app = express();
 const nodemailer = require("nodemailer");
 
 
-var cors = require('cors')
+const cors = require('cors')
 const db = require('../database/index.js')
 const {router} =require('../database/router/products.js')
 const {routerAdmin} =require('../database/router/admin.js')
+const path = require("path");
 app.use(cors())
 app.set('port',3333)
 app.use(express.json());
-
+app.use('/',routerAdmin)
 app.use('/api/admin',routerAdmin)
 app.use('/api/poducts',router)
 
-var bodyParser = require("body-parser");
-var cors = require("cors");
-
-app.use(cors());
-
-
-
-// for paths
-const path = require("path");
 // passport middelware
 const passport = require("passport");
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use(express.json());
+
 
 // calling and using  routers here
 // const { router } = require("../database/router/products.js");
@@ -40,6 +32,7 @@ app.use("/api/users", userRouter);
 
 const userAuthRouter = require("../database/router/user-auth");
 app.use("/api/auth", userAuthRouter);
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
