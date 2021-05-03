@@ -26,7 +26,7 @@ const createOneUser = async function (user) {
         connection.query(sql, (err, result) => {
           if (err) {
             console.log(err);
-            return reject(err);
+            return reject({ message: "error occured while creating new user" });
           } else {
             return resolve({ message: "new user has been created" });
           }

@@ -48,6 +48,7 @@ router.put("/update/:id", (req, res) => {
       res.send({ message: "your profile has been updated" });
     })
     .catch((err) => {
+      console.log(err);
       res.send({ message: "error occured while updating your profile" });
     });
 });
