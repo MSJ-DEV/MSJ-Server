@@ -11,7 +11,7 @@ app.set('port',3333)
 app.use(express.json());
 
 
-app.use('/api/admin',routerAdmin)
+// app.use('/api/admin',routerAdmin)
 app.use('/',routerAdmin)//aminside
 
 app.use('/',router)//extra work if i need it later 

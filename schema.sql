@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS admin(
     country VARCHAR(20),
     State VARCHAR(250),
     Zip INT,
+    gender VARCHAR(20),
     PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS images(
@@ -75,7 +76,7 @@ insert into products (name, date, category, oldprice, newprice, type, quantity, 
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Spagitti", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://i2.wp.com/lepidor.com.tn/wp-content/uploads/nouilles-2.png?fit=431%2C431&ssl=1",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Fell 2", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://static.openfoodfacts.org/images/products/619/400/331/0052/front_fr.7.full.jpg",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Touna", "Dex 24/04/2021", "Keep box", '1.500', '1.500', "El Manar", 1, "https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/64/0903/1.jpg?8805",1000, "availeble", "false");
-INSERT INTO admin(Firstname,Lastname,username,email,Address,password,repeatepassword,numberPhone,image,country,State,Zip)VALUES("","","Abidijhed","abidi55@gmail.com ","","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","2586","https://static.toiimg.com/photo/msid-67625046/67625046.jpg?57466","cif-Tn","Male",5);
+INSERT INTO admin(Firstname,Lastname,username,email,Address,password,repeatepassword,numberPhone,image,country,State,Zip,gender)VALUES("","","Abidijhed","abidi55@gmail.com ","","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","2586","https://static.toiimg.com/photo/msid-67625046/67625046.jpg?57466","cif-Tn","mared",5,"Male");
 
 
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("spagetti", "pate courte", "Food", "0.420", "0.420", "Epi d'or", 1, "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1", 1500,  "availeble", "true");

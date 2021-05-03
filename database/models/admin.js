@@ -6,7 +6,7 @@ module.exports = {
    createAdmin:((req,res)=>{
        var passwordHashed=crypto.createHash('sha256').update(req.body.password, 'utf8').digest('hex')
       var repeatepasswordHshed=crypto.createHash('sha256').update(req.body.repeatepassword, 'utf8').digest('hex')
-       const query=`INSERT INTO admin(Firstname,Lastname,username,email,Address,numberPhone,password,repeatepassword,image,country,State,Zip) VALUES("${req.body.Firstname}","${req.body.Lastname}","${req.body.username}","${req.body.email}","${req.body.Address}","${req.body.numberPhone}","${passwordHashed}","${repeatepasswordHshed}","${req.body.image}","${req.body.country}","${req.body.State}","${req.body.Zip}")`
+       const query=`INSERT INTO admin(Firstname,Lastname,username,email,Address,numberPhone,password,repeatepassword,image,country,State,Zip,gender) VALUES("${req.body.Firstname}","${req.body.Lastname}","${req.body.username}","${req.body.email}","${req.body.Address}","${req.body.numberPhone}","${passwordHashed}","${repeatepasswordHshed}","${req.body.image}","${req.body.country}","${req.body.State}","${req.body.Zip}","${req.body.gender}")`
       console.log(req.body)
        connection.query(query,(err,results)=>{
          if(err){
