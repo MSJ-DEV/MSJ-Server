@@ -3,7 +3,8 @@ CREATE DATABASE IF NOT EXISTS carrefour;
 USE carrefour;
 
 CREATE TABLE IF NOT EXISTS users(
-    id int AUTO_INCREMENT, 
+    id int AUTO_INCREMENT,
+    googleId VARCHAR(32),
     firstName VARCHAR(12),
     lastName VARCHAR(12),
     email VARCHAR(30),

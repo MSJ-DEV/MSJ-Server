@@ -66,6 +66,10 @@ const updateUser = async function (id, data) {
   console.log("user from request . body", data);
   if (user[0]) {
     const newUser = {};
+    // google id
+    data.googleId
+      ? (newUser.googleId = data.googleId)
+      : (newUser.googleId = user[0].googleId);
     // user name
     data.firstName
       ? (newUser.firstName = data.firstName)
@@ -117,6 +121,7 @@ const updateUser = async function (id, data) {
     setTimeout(() => {
       return new Promise((resolve, reject) => {
         const sql = `UPDATE users  SET 
+        googleId = "${newUser.googleId}",
         firstName = "${newUser.firstName}",
         lastName = "${newUser.lastName}",
         email = "${newUser.email}",
