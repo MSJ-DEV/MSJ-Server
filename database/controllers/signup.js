@@ -42,8 +42,10 @@ const createOneUserWithGoogle = async function (user) {
   var check = await userController.getOneUserByEmail(user.email);
 
   if (check[0]) {
+    console.log("check");
     return " this email is already in use";
   } else {
+    console.log("in");
     // sending the flat password and getting hashed one to store it in db
     setTimeout(() => {
       return new Promise((resolve, reject) => {
