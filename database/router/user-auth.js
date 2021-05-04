@@ -19,7 +19,7 @@ router.post("/signup/google", (req, res) => {
       .createOneUserWithGoogle(req.body)
 
       .then((data) => {
-        res.send({ message: "your profile has been created" });
+        res.send(data);
       })
       .catch((err) => {
         // console.log(err);
