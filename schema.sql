@@ -57,23 +57,18 @@ CREATE TABLE IF NOT EXISTS admin(
     country VARCHAR(20),
     PRIMARY KEY (id)
 );
+-- for the admin password 
+INSERT INTO admin(username,email,password,repeatepassword,image,country)VALUES("Abidijhed","abidi55@gmail.com ","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","https://static.toiimg.com/photo/msid-67625046/67625046.jpg?57466",'cif-Tn');
+--  for the products 
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Penne", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1",100, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Coca Cola", "Dex 24/04/2021", "Drink", '2.100', '2.100', "coca cola", 1, "http://cdn.shopify.com/s/files/1/0360/6436/2634/products/5449000000439-1_1024x.jpg?v=1586729294",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Sprite", "Dex 24/04/2021", "Drink", '2.100', '2.100', "limon", 1, "https://9a4yti-fi-dari.com/wp-content/uploads/2020/12/41795.jpg",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Fanta", "Dex 24/04/2021", "Drink", '2.100', '2.100', "orange", 1, "https://otrity.com/wp-content/uploads/2020/02/FantaOrange1-5L-1.jpg",1000, "availeble", "false");
-insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Meat", "", "Meat", '28.000 Kg', '28.000 Kg', "sheep", 1, "https://www.boucherieviandesagogo.com/images/produits/Epaule-de-Mouton-608.jpg",1000, "availeble", "false");
-insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Meat", "", "Meat", '30.000 Kg', '30.000 Kg', "Beff", 1, "https://static.canadiancattlemen.ca/wp-content/uploads/2015/09/beef-meat-display-1737-CanadaBeefInc.jpg",1000, "availeble", "false");
+insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Meat", "", "Meat", '28.000 ', '28.000 ', "sheep", 1, "https://www.boucherieviandesagogo.com/images/produits/Epaule-de-Mouton-608.jpg",1000, "availeble", "false");
+insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Meat", "", "Meat", '30.000 ', '30.000', "Beff", 1, "https://static.canadiancattlemen.ca/wp-content/uploads/2015/09/beef-meat-display-1737-CanadaBeefInc.jpg",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Spagitti", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://i2.wp.com/lepidor.com.tn/wp-content/uploads/nouilles-2.png?fit=431%2C431&ssl=1",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Fell 2", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://static.openfoodfacts.org/images/products/619/400/331/0052/front_fr.7.full.jpg",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Touna", "Dex 24/04/2021", "Keep box", '1.500', '1.500', "El Manar", 1, "https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/64/0903/1.jpg?8805",1000, "availeble", "false");
-INSERT INTO admin(username,email,password,repeatepassword,image,country)VALUES("Abidijhed","abidi55@gmail.com ","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","https://static.toiimg.com/photo/msid-67625046/67625046.jpg?57466",'cif-Tn');
-
-
-
-
--- insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("spagetti", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1",100, "availeble", "false");
-
-
 insert into products (name, date ,category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("spagetti","Dex 24/04/2021", "pate longue",  "0.430", "0.410", "Epi d'or", 1, "https://i1.wp.com/lepidor.com.tn/wp-content/uploads/nouilles-1.png?fit=431%2C431&ssl=1", 652, "availeble", "false");
 insert into products (name, date ,category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Grain d'OR","Dex 24/04/2021",  "Au gout de chocolat", "0.860", "840", "Grain D'Or", 1, "https://www.carrefourtunisie.com/medias/produits/numeroun/P2.jpg",8520 ,"availeble", "false");
 insert into products (name, date ,category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("El mazzraa", "Dex 24/04/2021", "Chiken",  "7.150", "7.150", "mliha", 1, "https://monoprixsmiles.monoprix.tn/wp-content/uploads/2021/04/Sans-titre-17.png", 562, "availeble", "false");

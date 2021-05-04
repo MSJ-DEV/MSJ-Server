@@ -13,7 +13,7 @@ const nodemailer = require("nodemailer");
 // app.use("/api/admin", routerAdmin);
 // app.use("/api/poducts", router);
 
-// var bodyParser = require("body-parser");
+var bodyParser = require("body-parser");
 // var cors = require("cors");
 
 // app.use(cors());
