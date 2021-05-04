@@ -14,15 +14,20 @@ router.get("/facebook", function (req, res) {
 
 // ************************************** authenticate with google singUp ************************************** \\
 router.post("/signup/google", (req, res) => {
-  signUpController
-    .createOneUserWithGoogle(req.body)
+  if (req.body.email) {
+    signUpController
+      .createOneUserWithGoogle(req.body)
 
-    .then((data) => {
-      res.send({ message: "your profile has been created" });
-    })
-    .catch((err) => {
-      // console.log(err);
-      res.send({ message: "error occured creating your profile" });
+      .then((data) => {
+        res.send({ message: "your profile has been created" });
+      })
+      .catch((err) => {
+        // console.log(err);
+        res.send({ message: "error occured creating your profile" });
+      });
+  } else
+    res.send({
+      message: "something went wrong, please try again or contact our support",
     });
 });
 // ************************************** authenticate with google signIn ************************************** \\
@@ -31,7 +36,7 @@ router.post("/signIn/google", (req, res) => {
     .checkUserAuthWithGoogle(req.body.email, req.body.id)
 
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       res.send({ message: "Welcome to our App!" });
     })
     .catch((err) => {

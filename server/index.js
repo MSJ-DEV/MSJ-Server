@@ -13,7 +13,7 @@ const nodemailer = require("nodemailer");
 // app.use("/api/admin", routerAdmin);
 // app.use("/api/poducts", router);
 
-// var bodyParser = require("body-parser");
+var bodyParser = require("body-parser");
 // var cors = require("cors");
 
 // app.use(cors());
@@ -70,7 +70,7 @@ let transporter = nodemailer.createTransport({
   secure: false, // true for 465, false for other ports
   auth: {
     user: 'msjdevelopper2021@hotmail.com', // generated ethereal user
-    pass: 'rmadi12345', // generated ethereal password
+    pass: 'rmadi12345', // generated ethereal password  
   },
   tls:{
     rejectUnauthorized:false
