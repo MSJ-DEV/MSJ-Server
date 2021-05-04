@@ -45,13 +45,12 @@ const createOneUserWithGoogle = async function (user) {
     return " this email is already in use";
   } else {
     // sending the flat password and getting hashed one to store it in db
-    user.password = await hashPassword(user.password);
     setTimeout(() => {
       return new Promise((resolve, reject) => {
         const sql = `INSERT INTO users (googleId, firstName, lastName, email) VALUES ("${user.googleId}", "${user.firstName}", "${user.lastName}", "${user.email}")`;
         connection.query(sql, (err, result) => {
           if (err) {
-            // console.log(err);
+            console.log(err);
             return reject({ message: "error occured while creating new user" });
           } else {
             return resolve({ message: "new user has been created" });

@@ -4,7 +4,7 @@ USE carrefour;
 
 CREATE TABLE IF NOT EXISTS users(
     id int AUTO_INCREMENT,
-    googleId int,
+    googleId VARCHAR(32),
     firstName VARCHAR(12),
     lastName VARCHAR(12),
     email VARCHAR(30),

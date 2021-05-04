@@ -12,10 +12,10 @@ router.get("/facebook", function (req, res) {
   res.send("logging in with facebook");
 });
 
-// ************************************** authenticate with google sigUp ************************************** \\
+// ************************************** authenticate with google singUp ************************************** \\
 router.post("/signup/google", (req, res) => {
-  userController
-    .updateUser(req.body)
+  signUpController
+    .createOneUserWithGoogle(req.body)
 
     .then((data) => {
       res.send({ message: "your profile has been created" });
@@ -31,6 +31,7 @@ router.post("/signIn/google", (req, res) => {
     .checkUserAuthWithGoogle(req.body.email, req.body.id)
 
     .then((data) => {
+      console.log(data);
       res.send({ message: "Welcome to our App!" });
     })
     .catch((err) => {
