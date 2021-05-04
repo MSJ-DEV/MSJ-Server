@@ -14,11 +14,12 @@ router.get("/facebook", function (req, res) {
 
 // ************************************** authenticate with google singUp ************************************** \\
 router.post("/signup/google", (req, res) => {
+  console.log(req.body)
   signUpController
     .createOneUserWithGoogle(req.body)
 
     .then((data) => {
-      res.send({ message: "your profile has been created" });
+      res.send(data).status(201);
     })
     .catch((err) => {
       // console.log(err);
