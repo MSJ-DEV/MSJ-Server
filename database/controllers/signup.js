@@ -26,7 +26,32 @@ const createOneUser = async function (user) {
         connection.query(sql, (err, result) => {
           if (err) {
             console.log(err);
-            return reject(err);
+            return reject({ message: "error occured while creating new user" });
+          } else {
+            return resolve({ message: "new user has been created" });
+          }
+        });
+      });
+    }, 1000);
+  }
+};
+// ************************************** create one user with google ************************************** \\
+
+var newPassword = "";
+const createOneUserWithGoogle = async function (user) {
+  var check = await userController.getOneUserByEmail(user.email);
+
+  if (check[0]) {
+    return " this email is already in use";
+  } else {
+    // sending the flat password and getting hashed one to store it in db
+    setTimeout(() => {
+      return new Promise((resolve, reject) => {
+        const sql = `INSERT INTO users (googleId, firstName, lastName, email) VALUES ("${user.googleId}", "${user.firstName}", "${user.lastName}", "${user.email}")`;
+        connection.query(sql, (err, result) => {
+          if (err) {
+            console.log(err);
+            return reject({ message: "error occured while creating new user" });
           } else {
             return resolve({ message: "new user has been created" });
           }
@@ -53,4 +78,4 @@ const hashPassword = async function (password) {
 
 // ************************************** export methods ************************************** \\
 
-module.exports = { createOneUser, hashPassword };
+module.exports = { createOneUser, hashPassword, createOneUserWithGoogle };
