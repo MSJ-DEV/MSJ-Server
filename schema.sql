@@ -3,12 +3,20 @@ CREATE DATABASE IF NOT EXISTS carrefour;
 USE carrefour;
 
 CREATE TABLE IF NOT EXISTS users(
-    id int AUTO_INCREMENT, 
-    firstName VARCHAR(200),
-    lastName VARCHAR(200),
-    email VARCHAR(200),
-    password VARCHAR(200),
+    id int AUTO_INCREMENT,
+    googleId VARCHAR(32),
+    firstName VARCHAR(12),
+    lastName VARCHAR(12),
+    email VARCHAR(30),
+    password VARCHAR(64),
     numberPhone INT,
+    city VARCHAR(10),
+    adresse1 VARCHAR(30),
+    adresse2 VARCHAR(30),
+    zipCode VARCHAR(4), 
+    createdAt timestamp NOT NULL DEFAULT current_timestamp,
+    updatedAt TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+    gender VARCHAR (6),
     PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS products(
@@ -62,12 +70,15 @@ INSERT INTO admin(username,email,password,repeatepassword,image,country)VALUES("
 
 
 
-insert into products (name, information, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("spagetti", "pate courte", "Food", "0.420", "0.420", "Epi d'or", "1", "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1", "1520",  "availeble", "true");
-insert into products (name, information, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("spagetti", "pate longue", "Food", "0.430", "0.410", "Epi d'or", "1", "https://i1.wp.com/lepidor.com.tn/wp-content/uploads/nouilles-1.png?fit=431%2C431&ssl=1", "652", "availeble", "true");
-insert into products (name, information, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("spagetti", "pate courte", "Food", "0.860", "840", "Chips", "1", "https://www.carrefourtunisie.com/medias/produits/numeroun/P2.jpg","8520" ,"availeble", "true");
-insert into products (name, information, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("El mazzraa", "Chiken", "Chiken", "7.150", "7.150", "mliha", "1", "https://monoprixsmiles.monoprix.tn/wp-content/uploads/2021/04/Sans-titre-17.png", "562", "availeble", "true");
-insert into products (name, information, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("spagetti", "pate courte", "LA Ghazelle", "3.190", "3.490", "Epi d'or", "1", "https://monoprixsmiles.monoprix.tn/wp-content/uploads/2021/04/Sans-titre-14.png","2305", "availeble", "true");
-insert into products (name, information, category, oldprice, newprice, type, quantity, image, quantityinstock,  status, promotion ) value ("spagetti", "pate courte", "pate", "2.280", "2.280", "NAtilait", "1", "https://monoprixsmiles.monoprix.tn/wp-content/uploads/2021/04/Sans-titre-113.png", "652", "availeble", "true");
+
+-- insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("spagetti", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1",100, "availeble", "false");
+
+
+insert into products (name, date ,category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("spagetti","Dex 24/04/2021", "pate longue",  "0.430", "0.410", "Epi d'or", 1, "https://i1.wp.com/lepidor.com.tn/wp-content/uploads/nouilles-1.png?fit=431%2C431&ssl=1", 652, "availeble", "false");
+insert into products (name, date ,category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Grain d'OR","Dex 24/04/2021",  "Au gout de chocolat", "0.860", "840", "Grain D'Or", 1, "https://www.carrefourtunisie.com/medias/produits/numeroun/P2.jpg",8520 ,"availeble", "false");
+insert into products (name, date ,category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("El mazzraa", "Dex 24/04/2021", "Chiken",  "7.150", "7.150", "mliha", 1, "https://monoprixsmiles.monoprix.tn/wp-content/uploads/2021/04/Sans-titre-17.png", 562, "availeble", "false");
+insert into products (name, date ,category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Chamiya","Dex 24/04/2021",  "LA Ghazelle", "3.190", "3.490", "Epi d'or", 1, "https://monoprixsmiles.monoprix.tn/wp-content/uploads/2021/04/Sans-titre-14.png",305, "availeble", "false");
+insert into products (name, date ,category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Nitalait", "Dex 24/04/2021", "pate courte", "2.280", "2.280", "NAtilait", 1, "https://monoprixsmiles.monoprix.tn/wp-content/uploads/2021/04/Sans-titre-113.png", 652, "availeble", "false");
 
 
 

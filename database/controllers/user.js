@@ -62,27 +62,24 @@ const getOneUserById = (id) => {
 const updateUser = async function (id, data) {
   var user;
   user = await getOneUserById(id);
-  console.log("data", data);
+  console.log("user from data base", user);
+  console.log("user from request . body", data);
   if (user[0]) {
     const newUser = {};
+    // google id
+    data.googleId
+      ? (newUser.googleId = data.googleId)
+      : (newUser.googleId = user[0].googleId);
     // user name
-    if (data.firstName) {
-      newUser.firstName = data.firstName;
-    } else {
-      newUser.firstName = user[0].firstName;
-    }
+    data.firstName
+      ? (newUser.firstName = data.firstName)
+      : (newUser.firstName = user[0].firstName);
     // last name
-    if (data.lastName) {
-      newUser.lastName = data.lastName;
-    } else {
-      newUser.lastName = user[0].lastName;
-    }
+    data.lastName
+      ? (newUser.lastName = data.lastName)
+      : (newUser.lastName = user[0].lastName);
     // email
-    if (data.email) {
-      newUser.email = data.email;
-    } else {
-      newUser.email = user[0].email;
-    }
+    data.email ? (newUser.email = data.email) : (newUser.email = user[0].email);
     // password
     if (data.password) {
       bcrypt.genSalt(10, (err, salt) => {
@@ -90,9 +87,7 @@ const updateUser = async function (id, data) {
           if (err) {
             console.log(err);
           } else {
-            console.log("fzdkofk");
             newUser.password = hash;
-            console.log(newUser.password);
           }
         });
       });
@@ -100,14 +95,44 @@ const updateUser = async function (id, data) {
       newUser.password = user[0].password;
     }
     // numberPhone
-    if (data.numberPhone) {
-      newUser.numberPhone = data.numberPhone;
-    } else {
-      newUser.numberPhone = user[0].numberPhone;
-    }
+    data.numberPhone
+      ? (newUser.numberPhone = data.numberPhone)
+      : (newUser.numberPhone = user[0].numberPhone);
+    // adresse 1
+    data.adresse1
+      ? (newUser.adresse1 = data.adresse1)
+      : (newUser.adresse1 = user[0].adresse1);
+    // adresse 2
+    data.adresse2
+      ? (newUser.adresse2 = data.adresse2)
+      : (newUser.adresse2 = user[0].adresse2);
+    // city
+    data.city ? (newUser.city = data.city) : (newUser.city = user[0].city);
+    // zip code
+    data.zipCode
+      ? (newUser.zipCode = data.zipCode)
+      : (newUser.zipCode = user[0].zipCode);
+    // gender
+    data.gender
+      ? (newUser.gender = data.gender)
+      : (newUser.gender = user[0].gender);
+
+    // update the user
     setTimeout(() => {
       return new Promise((resolve, reject) => {
-        const sql = `UPDATE users  SET firstName = "${newUser.firstName}", lastName = "${newUser.lastName}", email = "${newUser.email}", password = "${newUser.password}", numberPhone = ${newUser.numberPhone} WHERE id = ${id}`;
+        const sql = `UPDATE users  SET 
+        googleId = "${newUser.googleId}",
+        firstName = "${newUser.firstName}",
+        lastName = "${newUser.lastName}",
+        email = "${newUser.email}",
+        password = "${newUser.password}",
+        numberPhone = ${newUser.numberPhone},
+        city = "${newUser.city}",
+        adresse1 = "${newUser.adresse1}",
+        adresse2 = "${newUser.adresse2}",
+        zipCode = "${newUser.zipCode}",
+        gender = "${newUser.gender}"
+         WHERE id = ${id}`;
         connection.query(sql, (err, result) => {
           if (err) {
             return reject(err);
