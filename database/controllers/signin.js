@@ -45,4 +45,26 @@ const comparePassword = async function (email, oldPassword) {
   }
 };
 
-module.exports = { comparePassword };
+// ************************************** google auth checker ************************************** \\
+// this function will check if the user who wants to login with google already created an account or not
+
+const checkUserAuthWithGoogle = async function (email, id) {
+  // get old data from database
+  const checkEmail = await userController.getOneUserByEmail(email);
+  return new Promise((resolve, reject) => {
+    // check if we have response
+    if (checkEmail[0]) {
+      if (checkEmail[0].email === email) {
+        resolve({ message: "WELCOME!" });
+      } else {
+        reject({
+          message:
+            "Please sign up before log in in our application, thank you.",
+        });
+      }
+    }
+    reject({ message: "error occureed while fetching data from db" });
+  });
+};
+
+module.exports = { comparePassword, checkUserAuthWithGoogle };
