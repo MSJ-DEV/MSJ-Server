@@ -4,11 +4,18 @@ USE carrefour;
 
 CREATE TABLE IF NOT EXISTS users(
     id int AUTO_INCREMENT, 
-    firstName VARCHAR(200),
-    lastName VARCHAR(200),
-    email VARCHAR(200),
-    password VARCHAR(200),
+    firstName VARCHAR(12),
+    lastName VARCHAR(12),
+    email VARCHAR(30),
+    password VARCHAR(64),
     numberPhone INT,
+    city VARCHAR(10),
+    adresse1 VARCHAR(30),
+    adresse2 VARCHAR(30),
+    zipCode VARCHAR(4), 
+    createdAt timestamp NOT NULL DEFAULT current_timestamp,
+    updatedAt TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+    gender VARCHAR (6),
     PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS products(
