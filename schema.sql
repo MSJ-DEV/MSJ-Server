@@ -67,6 +67,14 @@ CREATE TABLE IF NOT EXISTS images(
     image text,
     PRIMARY KEY (id)
 );
+CREATE TABLE sessions(
+    id int NOT NULL AUTO_INCREMENT,
+   admin_id int NOT NULL ,
+    session varchar(250) NOT NULL,
+    date varchar(250) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (admin_id) References admin(id)
+);
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Penne", "Dex 24/04/2021", "Pasta", '0.420', '0.420', "Epi Dor", 1, "https://i0.wp.com/lepidor.com.tn/wp-content/uploads/cavatoni.png?fit=431%2C431&ssl=1",100, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Coca Cola", "Dex 24/04/2021", "Drink", '2.100', '2.100', "coca cola", 1, "http://cdn.shopify.com/s/files/1/0360/6436/2634/products/5449000000439-1_1024x.jpg?v=1586729294",1000, "availeble", "false");
 insert into products (name, date, category, oldprice, newprice, type, quantity, image, quantityinstock, status, promotion ) value ("Sprite", "Dex 24/04/2021", "Drink", '2.100', '2.100', "limon", 1, "https://9a4yti-fi-dari.com/wp-content/uploads/2020/12/41795.jpg",1000, "availeble", "false");
