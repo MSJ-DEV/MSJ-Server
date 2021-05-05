@@ -5,8 +5,10 @@ const nodemailer = require("nodemailer");
 
 const nodeMail = async (req, res) => {
   res.send("well recive");
+  console.log('*****', req.body)
   let text = req.body.text;
   let email = req.body.email;
+  let subject = req.body.subjectTosend
   // ****************************** NODE MAIL **************************
   let transporter = nodemailer.createTransport({
     service: "hotmail",
@@ -24,9 +26,9 @@ const nodeMail = async (req, res) => {
   // send mail with defined transport object
   let info = await transporter
     .sendMail({
-      from: `"Fred Foo 👻" <msjdevelopper2021@hotmail.com>`, // sender address
-      to: "rmadi.med1@gmail.com", // list of receivers
-      subject: "Hello ✔", // Subject line
+      from: `"Contact   👻" <msjdevelopper2021@hotmail.com>`, // sender address
+      to: email, // list of receivers
+      subject: subject, // Subject line
       text: text, // plain text body
       html: text, // html body
     })
@@ -41,7 +43,7 @@ const nodeMail = async (req, res) => {
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
   // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 
   // ****************************** NODE MAIL **************************
