@@ -15,21 +15,21 @@ module.exports = {
          }
        })
    }),
-   getoneAdmin :((req,res)=>{
-    var passwordHashed = crypto.createHash('sha256').update(req.body.password, 'utf8').digest('hex')
-    var repeatepasswordHshed=crypto.createHash('sha256').update(req.body.repeatepassword, 'utf8').digest('hex')
-    const query=`SELECT * from admin where email="${req.body.email}"`
-    connection.query(query,(err,results)=>{
-      if(err){
-        console.log(err)
-      }else if(results.length>0 && results[0].password===passwordHashed && results[0].repeatepassword===repeatepasswordHshed && passwordHashed===repeatepasswordHshed){
-          res.status(200).send(results)
-        }else{
-          res.status(500).send('wrong password or email')
+  //  getoneAdmin :((req,res)=>{
+  //   var passwordHashed = crypto.createHash('sha256').update(req.body.password, 'utf8').digest('hex')
+  //   var repeatepasswordHshed=crypto.createHash('sha256').update(req.body.repeatepassword, 'utf8').digest('hex')
+  //   const query=`SELECT * from admin where email="${req.body.email}"`
+  //   connection.query(query,(err,results)=>{
+  //     if(err){
+  //       console.log(err)
+  //     }else if(results.length>0 && results[0].password===passwordHashed && results[0].repeatepassword===repeatepasswordHshed && passwordHashed===repeatepasswordHshed){
+  //         res.status(200).send(results)
+  //       }else{
+  //         res.status(500).send('wrong password or email')
           
-        }
-    })
-  }),
+  //       }
+  //   })
+  // }),
   getAll:((req,res)=>{
     const query=`SELECT * FROM admin`
     connection.query(query,(err,result)=>{
