@@ -1,17 +1,27 @@
 const express = require("express");
 const app = express();
-
+const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const db = require('../database/index.js')
 const {router} =require('../database/router/products.js')
 const {routerAdmin} =require('../database/router/admin.js')
+app.use(cookieParser())
 const path = require("path");
-app.use(cors())
+app.use(cors({
+  origin:'http://localhost:3000', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}))
 app.set('port',3333)
 app.use(express.json());
-app.use('/',routerAdmin)
-app.use('/api/admin',routerAdmin)
-app.use('/api/poducts',router)
+
+
+// app.use('/api/admin',routerAdmin)
+app.use('/',routerAdmin)//aminside
+
+app.use('/',router)//extra work if i need it later 
+app.use('/api/poducts',router)//croud for the products 
+
 
 // passport middelware
 const passport = require("passport");
