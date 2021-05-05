@@ -34,7 +34,21 @@ router.get("/oneUserEmail", (req, res) => {
   userController
     .getOneUserByEmail(req.body.email)
     .then((data) => {
+<<<<<<< HEAD
       res.send({ message: data });
+=======
+      res.send(data);
+    })
+    .catch((err) => res.send(err));
+});
+
+// /*************************** with post the one user by lEmail  */
+router.post("/oneUserEmail", (req, res) => {
+  userController
+    .getOneUserByEmail(req.body.email)
+    .then((data) => {
+      res.send(data).status(201);
+>>>>>>> c039735bff35af297ad3b29f294d2e76d1c92235
     })
     .catch((err) => res.send(err));
 });
