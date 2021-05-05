@@ -34,7 +34,7 @@ router.get("/oneUserEmail", (req, res) => {
   userController
     .getOneUserByEmail(req.body.email)
     .then((data) => {
-      res.send({ message: "done" });
+      res.send({ message: data });
     })
     .catch((err) => res.send(err));
 });
