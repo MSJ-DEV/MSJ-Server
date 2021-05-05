@@ -1,6 +1,8 @@
+const configSQl = require("../configSQL");
+
 module.exports = {
-  host: 'localhost',
-  user: 'root',
-  password: 'Ji31826832',
-  database: 'carrefour'
+  host: "localhost",
+  user: configSQl.user,
+  password: configSQl.password,
+  database: "carrefour",
 };
