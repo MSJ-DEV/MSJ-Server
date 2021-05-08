@@ -51,6 +51,8 @@ router.post("/oneUserEmail", (req, res) => {
 
 // ************************************** update one by id ************************************** \\
 router.put("/update/:id", (req, res) => {
+  console.log("request body", req.body);
+  console.log(req.params.id);
   userController
     .updateUser(req.params.id, req.body)
 
