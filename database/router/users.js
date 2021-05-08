@@ -41,6 +41,7 @@ router.get("/oneUserEmail", (req, res) => {
 
 // /*************************** with post the one user by lEmail  */
 router.post("/oneUserEmail", (req, res) => {
+  
   userController
     .getOneUserByEmail(req.body.email)
     .then((data) => {
