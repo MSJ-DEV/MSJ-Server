@@ -62,9 +62,10 @@ const getOneUserById = (id) => {
 const updateUser = async function (id, data) {
   var user;
   user = await getOneUserById(id);
-  console.log("user from data base", user);
-  console.log("user from request . body", data);
-  if (user[0]) {
+  console.log(user);
+
+  if (user[0] && Object.keys(data).length > 0) {
+    console.log("in");
     const newUser = {};
     // google id
     data.googleId
@@ -142,6 +143,10 @@ const updateUser = async function (id, data) {
         });
       });
     }, 1000);
+  } else {
+    return new Promise((resolve, reject) => {
+      return reject("something went wrong");
+    });
   }
 };
 
