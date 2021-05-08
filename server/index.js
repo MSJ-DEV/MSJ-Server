@@ -50,11 +50,10 @@ app.use(
   }),
 );
 
-app.set("port", 3333);
-app.use(express.json());
-
 // app.use('/api/admin',routerAdmin)
 app.use("/", routerAdmin); //aminside
+app.set("port", 3333);
+app.use(express.json());
 
 app.use("/", router); //extra work if i need it later
 app.use("/api/poducts", router); //croud for the products
@@ -78,7 +77,7 @@ const mailRouter = require("../database/router/nodeMail");
 app.use("/api", mailRouter);
 
 const paymentRouter = require("../database/router/payment");
-app.use("/api", paymentRouter);
+app.use("/api", paymentRouter, () => console.log("test"));
 
 //
 
