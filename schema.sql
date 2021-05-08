@@ -77,7 +77,7 @@ CREATE TABLE sessions(
     session varchar(250) NOT NULL,
     date varchar(250) NOT NULL,
     PRIMARY KEY (id),
-    admin_id INT (16),
+   
     FOREIGN KEY (admin_id) REFERENCES admin(id)
 );
 -- for the admin password 
