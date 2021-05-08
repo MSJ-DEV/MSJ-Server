@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 // function node mail
 
 const nodeMail = async (req, res) => {
+  console.log(req.body);
   let text = req.body.text;
   let email = req.body.email;
   let subject = req.body.subjectTosend
@@ -71,7 +72,7 @@ const nodeMail = async (req, res) => {
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
   // Preview only available when sending through an Ethereal account
-  // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 
   // ****************************** NODE MAIL **************************
