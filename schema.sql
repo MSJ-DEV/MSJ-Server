@@ -10,17 +10,11 @@ CREATE TABLE IF NOT EXISTS users(
     email VARCHAR(30),
     password VARCHAR(64),
     numberPhone INT,
---   jihed
-     Address VARCHAR(255),
-    image VARCHAR(200),
+    image VARCHAR(300),
      country VARCHAR(20),
-    State VARCHAR(250),
-    Zip VARCHAR(250),
-    gender VARCHAR(250),
--- jihed
     city VARCHAR(10),
-    adresse1 VARCHAR(30),
-    adresse2 VARCHAR(30),
+    adresse1 VARCHAR(62),
+    adresse2 VARCHAR(62),
     zipCode VARCHAR(4), 
     createdAt timestamp NOT NULL DEFAULT current_timestamp,
     updatedAt TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
@@ -56,7 +50,7 @@ CREATE TABLE IF NOT EXISTS list(
 
 
 CREATE TABLE IF NOT EXISTS admin(
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT AUTO_INCREMENT,
     Firstname VARCHAR(250),
     Lastname VARCHAR(250),
     username VARCHAR(255),
@@ -73,17 +67,17 @@ CREATE TABLE IF NOT EXISTS admin(
     PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS images(
-    id int AUTO_INCREMENT, 
+    id int NOT NULL AUTO_INCREMENT, 
     image text,
     PRIMARY KEY (id)
-
-CREATE TABLE sessions(
-    id int NOT NULL AUTO_INCREMENT,
-   admin_id int NOT NULL ,
-    session varchar(250) NOT NULL,
-    date varchar(250) NOT NULL,
+);
+CREATE TABLE IF NOT EXISTS sessions(
+    id int AUTO_INCREMENT,
+    session VARCHAR(250),
+    date VARCHAR(250),
     PRIMARY KEY (id),
-    FOREIGN KEY (admin_id) References admin(id)
+    admin_id INT (16),
+    FOREIGN KEY (admin_id) REFERENCES admin(id)
 );
 -- for the admin password 
 INSERT INTO admin(username,email,password,repeatepassword,image,country)VALUES("Abidijhed","abidi55@gmail.com ","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","8b107acfd3cfa06ba0b45e20b4284f005ea3d440183a44260b221eb8d8be9acc","https://static.toiimg.com/photo/msid-67625046/67625046.jpg?57466",'cif-Tn');
