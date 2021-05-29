@@ -34,13 +34,26 @@ router.get("/oneUserEmail", (req, res) => {
   userController
     .getOneUserByEmail(req.body.email)
     .then((data) => {
-      res.send({ message: "done" });
+      res.send(data);
+    })
+    .catch((err) => res.send(err));
+});
+
+// /*************************** with post the one user by lEmail  */
+router.post("/oneUserEmail", (req, res) => {
+  
+  userController
+    .getOneUserByEmail(req.body.email)
+    .then((data) => {
+      res.send(data).status(201);
     })
     .catch((err) => res.send(err));
 });
 
 // ************************************** update one by id ************************************** \\
 router.put("/update/:id", (req, res) => {
+  console.log("request body", req.body);
+  console.log(req.params.id);
   userController
     .updateUser(req.params.id, req.body)
 
